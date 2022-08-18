@@ -12,6 +12,14 @@ function login(){
     }
 }
 
+email.addEventListener('keydown', () => {
+    email.classList.remove("is-invalid")
+})
+
+password.addEventListener('keydown', () => {
+    password.classList.remove("is-invalid")
+})
+
 document.addEventListener('DOMContentLoaded', () =>{
     document.getElementById('ingresar').addEventListener('click', () =>{
       login();
