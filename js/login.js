@@ -1,12 +1,14 @@
 function login(){
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
+    email = document.getElementById('email');
+    password = document.getElementById('password');
 
-    if(email.value === "" || password.value === ""){
-        email.classList.add('is-invalid');
+    if(email.value === ""){
+        email.classList.add('is-invalid'); 
+    }if(password.value === ""){
         password.classList.add('is-invalid');
-    }else{
-        location.href = "/index.html";
+    }if(email.value !== "" && password.value !== ""){
+        localStorage.setItem('item',JSON.stringify(email));
+        location.href = "/index.html"
     }
 }
 
