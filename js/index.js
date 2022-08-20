@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     if(usuario == null){
         alert("Es necesario iniciar sesión.");
-        location.href = "/login.html"
+        location.href = "/js/login.html"
     } else {
         document.getElementById('usuario');
     }
