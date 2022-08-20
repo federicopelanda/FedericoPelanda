@@ -2,13 +2,13 @@ function login(){
     email = document.getElementById('email');
     password = document.getElementById('password');
 
-    if(email.value === ""){
+    if(email.value !== "" && password.value !== ""){
+        localStorage.setItem('user',JSON.stringify(email.value));
+        location.href = "/index.html"
+    } else if(email.value === ""){
         email.classList.add('is-invalid'); 
     }if(password.value === ""){
         password.classList.add('is-invalid');
-    }if(email.value !== "" && password.value !== ""){
-        localStorage.setItem('item',JSON.stringify(email));
-        location.href = "/index.html"
     }
 }
 

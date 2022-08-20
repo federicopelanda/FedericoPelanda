@@ -1,3 +1,25 @@
+document.addEventListener('DOMContentLoaded',()=>{
+
+    let usuario = JSON.parse(localStorage.getItem('user'));
+
+    if(usuario == null){
+        alert("Es necesario iniciar sesión.");
+        location.href = "/login.html"
+    } else {
+        document.getElementById('usuario');
+    }
+}
+)
+
+function logOut(){
+    localStorage.clear();
+    location.href= "/login.html"
+}
+
+document.getElementById('logOut').addEventListener('click', ()=>{
+    logOut();
+})
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
