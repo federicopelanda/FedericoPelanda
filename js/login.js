@@ -44,3 +44,12 @@ function onSignIn(googleUser) {
     localStorage.setItem('user',JSON.stringify(profile));
     location.href = "index.html"
 }
+
+function logOut(){
+    localStorage.clear();
+    location.href= "/login.html"
+}
+
+document.getElementById('logOut').addEventListener('click', ()=>{
+    logOut();
+})
