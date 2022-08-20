@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 function logOut(){
     localStorage.clear();
-    location.href= "FedericoPelanda/login.html"
+    location.href= "login.html"
 }
 
 document.getElementById('logOut').addEventListener('click', ()=>{
