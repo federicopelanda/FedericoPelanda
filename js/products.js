@@ -1,7 +1,5 @@
-//Array donde se cargarán los datos recibidos:
-let autosArray = [];
+let productsArray = [];
 
-//Función que recibe el array, y los muestra en pantalla por medio del DOM
 function showCategoriesList(array){
     let htmlContentToAppend = "";
 
