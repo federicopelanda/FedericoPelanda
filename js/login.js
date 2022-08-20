@@ -36,20 +36,12 @@ function onSignIn(googleUser) {
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail());
     
+    localStorage.setItem('user',JSON.stringify(email.value));
+    location.href = "index.html"
+
 
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 
-    localStorage.setItem('user',JSON.stringify(profile));
-    location.href = "index.html"
 }
-
-function logOut(){
-    localStorage.clear();
-    location.href= "/login.html"
-}
-
-document.getElementById('logOut').addEventListener('click', ()=>{
-    logOut();
-})
