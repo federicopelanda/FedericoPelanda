@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 function logOut(){
     localStorage.clear();
-    location.href= "/login.html"
+    location.href= "/js/login.html"
 }
 
 document.getElementById('logOut').addEventListener('click', ()=>{
