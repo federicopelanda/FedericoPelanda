@@ -141,3 +141,12 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+function logOut(){
+    localStorage.clear();
+    location.href= "login.html"
+}
+
+document.getElementById('logOut').addEventListener('click', ()=>{
+    logOut();
+})
