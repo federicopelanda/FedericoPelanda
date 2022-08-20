@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     if(usuario == null){
         alert("Es necesario iniciar sesión.");
-        location.href = "/js/login.html"
+        
     } else {
         document.getElementById('usuario');
     }
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 function logOut(){
     localStorage.clear();
-    location.href= "FedericoPelanda/js/login.html"
+    
 }
 
 document.getElementById('logOut').addEventListener('click', ()=>{
