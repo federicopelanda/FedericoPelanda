@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     if(usuario == null){
         alert("Es necesario iniciar sesión.");
-        location.href= "FedericoPelanda/login.html"
+        location.href= "login.html"
         
     } else {
         document.getElementById('usuario');
