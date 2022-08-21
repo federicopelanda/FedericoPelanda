@@ -15,10 +15,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 function logOut(){
     localStorage.clear();
     window.location= "login.html"
-    var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
 }
 
 document.getElementById('logOut').addEventListener('click', ()=>{

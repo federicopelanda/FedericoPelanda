@@ -36,7 +36,7 @@ function onSignIn(googleUser) {
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail());
     
-    localStorage.setItem('user',JSON.stringify(email.value));
+    localStorage.setItem('user',"prueba");
     location.href = "index.html"
 
 
