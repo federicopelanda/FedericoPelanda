@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         location.href= "login.html"
         
     } else {
-        document.getElementById('usuario');
+        document.getElementById('usuario').innerHTML=email.value;
     }
 }
 )
