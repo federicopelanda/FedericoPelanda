@@ -1,37 +1,18 @@
-document.addEventListener('DOMContentLoaded',()=>{
-
-    let usuario = JSON.parse(localStorage.getItem('user'));
-
-    if(usuario == null){
-        alert("Es necesario iniciar sesión.");
-        location.href= "login.html"
-        
-    } else {
-        document.getElementById('usuario').innerHTML=email.value;
-    }
-}
-)
-
-function logOut(){
-    localStorage.clear();
-    window.location= "login.html"
-}
-
-document.getElementById('logOut').addEventListener('click', ()=>{
-    logOut();
-})
-
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
+        localStorage.setItem("catName", "Autos");
         window.location = "products.html"
+        
     });
     document.getElementById("juguetes").addEventListener("click", function() {
         localStorage.setItem("catID", 102);
+        localStorage.setItem("catName", "Juguetes");
         window.location = "products.html"
     });
     document.getElementById("muebles").addEventListener("click", function() {
         localStorage.setItem("catID", 103);
+        localStorage.setItem("catName", "Muebles");
         window.location = "products.html"
     });
 });

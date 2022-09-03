@@ -147,12 +147,3 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
-
-function logOut(){
-    localStorage.clear();
-    window.location= "login.html"
-}
-
-document.getElementById('logOut').addEventListener('click', ()=>{
-    logOut();
-})
