@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 )
 
 function logOut(){
-  localStorage.clear();
+  localStorage.removeItem('user');
   location.href= "login.html"
 }
 
