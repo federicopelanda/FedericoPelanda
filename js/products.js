@@ -57,8 +57,6 @@ document.addEventListener("DOMContentLoaded", function (resultObj) {
   });
 });
 
-let catNombre = productsArray
-
 //Filtro por valores de precio mínimo y máximo
 function filtrar() {
   let minimo = parseInt(document.getElementById("precioMin").value); //tomo el valor mínimo
@@ -66,7 +64,6 @@ function filtrar() {
   let listaFiltrada = productsArray.filter(
     (producto) => producto.cost >= minimo && producto.cost <= maximo
   );
-  // arr.sort((a,b)=>a-b)
   listaFiltrada.sort((a, b) => a.cost - b.cost);
 
   showProductsList(listaFiltrada);
@@ -79,7 +76,6 @@ function filtroDesc() {
   let listaDesc = productsArray.filter(
     (producto) => producto.cost >= min && producto.cost <= max
   );
-  // arr.sort((a,b)=>a-b)
   listaDesc.sort((a, b) => b.cost - a.cost);
 
   showProductsList(listaDesc);
@@ -92,7 +88,6 @@ function filtroAsc() {
   let listaAsc = productsArray.filter(
     (producto) => producto.cost >= min && producto.cost <= max
   );
-  // arr.sort((a,b)=>a-b)
   listaAsc.sort((a, b) => a.cost - b.cost);
 
   showProductsList(listaAsc);
@@ -105,7 +100,6 @@ function filtroRel() {
   let listaRel = productsArray.filter(
     (producto) => producto.soldCount >= min && producto.soldCount <= max
   );
-  // arr.sort((a,b)=>a-b)
   listaRel.sort((a, b) => b.soldCount - a.soldCount);
 
   showProductsList(listaRel);
