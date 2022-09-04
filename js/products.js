@@ -47,11 +47,12 @@ function showProductsList(array) {
   document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
 }
 
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", function (resultObj) {
   getJSONData(PRODUCTS_URL + idCategories + ".json").then(function (resultObj) {
     if (resultObj.status === "ok") {
       productsArray = resultObj.data.products;
       showProductsList(productsArray);
+      document.getElementById("catNombre").innerHTML = "Verás aquí los productos de la categoría " + resultObj.data.catName;
     }
   });
 });
