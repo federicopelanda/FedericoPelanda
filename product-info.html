@@ -31,6 +31,12 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <button class="dropbtn"><script>document.write(localStorage.getItem('user'));</script></button>
+              <div class="dropdown-content">
+                <a href="my-profile.html">Mi perfil</a>
+                <a href="cart.html">Mi carrito</a>
+                <a href="#" onclick="logOut()">Cerrar sesión</a>
           </li>
         </ul>
       </div>
@@ -38,10 +44,32 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <p id="prod-info-list-container"></p>
+      <br><hr><br>
+  <h2>Comentarios</h2>
+      <p id="prod-info-com-list-container"></p>
+      <br>
+      <h3>Comentar</h3><br>
+      <h5>Tu opinión:</h5>
+      <textarea name="" id="textoCom" cols="80" rows="7"></textarea><br>
+      <h5>Tu puntuación:</h5>
+      <div class="puntuacion">
+        <input id="radio1" type="radio" name="estrellas" value="5"onclick="document.getElementById('valor').innerHTML='5'"><!--
+        --><label for="radio1"><i class="fas fa-star"></i></i></label><!--
+        --><input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('valor').innerHTML='4'"><!--
+        --><label for="radio2"><i class="fas fa-star"></i></i></label><!--
+        --><input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('valor').innerHTML='3'"><!--
+        --><label for="radio3"><i class="fas fa-star"></i></label><!--
+        --><input id="radio4" type="radio" name="estrellas" value="2"onclick="document.getElementById('valor').innerHTML='2'"><!--
+        --><label for="radio4"><i class="fas fa-star"></i></label><!--
+        --><input id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('valor').innerHTML='1'"><!--
+        --><label for="radio5"><i class="fas fa-star"></i></label><br>
+        
       </div>
-    </div>
+       <span id="valor"></span>
+       <span id="reloj"></span>
+      <br><button type="submit" class="btn btn-primary" id="enviarCom">Enviar</button>
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">

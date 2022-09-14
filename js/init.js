@@ -42,11 +42,11 @@ let getJSONData = function(url){
 
 document.addEventListener('DOMContentLoaded',()=>{
 
-  let usuario = JSON.parse(localStorage.getItem('user'));
+  let usuario = localStorage.getItem('user');
 
   if(usuario == null){
       alert("Es necesario iniciar sesión.");
-      location.href = "login.html"
+      location.href = "/login.html"
   } else {
       document.getElementById('usuario');
   }
@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 )
 
 function logOut(){
-  localStorage.removeItem('user');
-  location.href= "login.html"
+  localStorage.clear();
+  location.href= "/login.html"
 }
 
 document.getElementById('logOut').addEventListener('click', ()=>{
@@ -78,7 +78,6 @@ function onSignIn(googleUser) {
   console.log("Image URL: " + profile.getImageUrl());
   console.log("Email: " + profile.getEmail());*/
   // The ID token you need to pass to your backend:
-
 
   let users = {};
   
@@ -110,19 +109,4 @@ function onLoad(){
   gapi.load('auth2' , function(){
       gapi.auth2.init();
   })
-}
-
-function parseJwt(token) {
-  var base64Url = token.split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(
-    window
-      .atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-  return JSON.parse(jsonPayload);
 }

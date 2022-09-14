@@ -3,6 +3,7 @@ let currentSortCriteria = undefined;
 let minimo = undefined;
 let maximo = undefined;
 let idCategories = localStorage.getItem("catID");
+let productoID = localStorage.getItem("prodID");
 let buscado = []
 
 function showProductsList(array) {
@@ -13,7 +14,7 @@ function showProductsList(array) {
 
     htmlContentToAppend +=
       `
-        <div class="list-group-item list-group-item-action">
+        <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action" id=`+product.id+`>
             <div class="row">
                 <div class="col-3">
                     <img src="` +
@@ -43,6 +44,7 @@ function showProductsList(array) {
             </div>
         </div>
         `;
+
   }
   document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
 }
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function (resultObj) {
   });
 });
 
+
 //Filtro por valores de precio mínimo y máximo
 function filtrar() {
   let minimo = parseInt(document.getElementById("precioMin").value); //tomo el valor mínimo
@@ -64,6 +67,7 @@ function filtrar() {
   let listaFiltrada = productsArray.filter(
     (producto) => producto.cost >= minimo && producto.cost <= maximo
   );
+  // arr.sort((a,b)=>a-b)
   listaFiltrada.sort((a, b) => a.cost - b.cost);
 
   showProductsList(listaFiltrada);
@@ -76,6 +80,7 @@ function filtroDesc() {
   let listaDesc = productsArray.filter(
     (producto) => producto.cost >= min && producto.cost <= max
   );
+  // arr.sort((a,b)=>a-b)
   listaDesc.sort((a, b) => b.cost - a.cost);
 
   showProductsList(listaDesc);
@@ -88,6 +93,7 @@ function filtroAsc() {
   let listaAsc = productsArray.filter(
     (producto) => producto.cost >= min && producto.cost <= max
   );
+  // arr.sort((a,b)=>a-b)
   listaAsc.sort((a, b) => a.cost - b.cost);
 
   showProductsList(listaAsc);
@@ -100,6 +106,7 @@ function filtroRel() {
   let listaRel = productsArray.filter(
     (producto) => producto.soldCount >= min && producto.soldCount <= max
   );
+  // arr.sort((a,b)=>a-b)
   listaRel.sort((a, b) => b.soldCount - a.soldCount);
 
   showProductsList(listaRel);
@@ -143,13 +150,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Buscador
 function buscar(){
-    let elemento = document.getElementById('buscador').value;
-    let buscado = productsArray.filter( producto =>{
-        return producto.name.toLowerCase().indexOf(elemento.toLowerCase()) > -1;
-    });
-    showProductsList(buscado)
+  let elemento = document.getElementById('buscador').value;
+  let buscado = productsArray.filter( producto =>{
+      return producto.name.toLowerCase().indexOf(elemento.toLowerCase()) > -1;
+  });
+  showProductsList(buscado)
 }
 
 document.getElementById('buscador').addEventListener('keyup',()=>{
-    buscar();
+  buscar();
 });
+
+function setProdID(id) {
+  localStorage.setItem("prodID", id)
+    window.location = "product-info.html"
+}
