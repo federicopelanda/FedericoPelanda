@@ -17,16 +17,22 @@ function showProductsList(array) {
   <h5>`+ array.category +`</h5><br>
   <h4 style="font-weight: bold;">Cantidad de vendidos</h4>
   <h5 class="">`+ array.soldCount +`</h5><br>
-  <h4 style="font-weight: bold;">Imágenes ilustrativas</h4>
-  <div>
-  <img id="imgIl" src="`+ array.images[0] +`" width=22% class="img-thumbnail">
-  <img id="imgIl" src="`+ array.images[1] +`" width=22% class="img-thumbnail">
-  <img id="imgIl" src="`+ array.images[2] +`" width=22% class="img-thumbnail">
-  <img id="imgIl" src="`+ array.images[3] +`" width=22% class="img-thumbnail">
-  </div>
+  <h4 style="font-weight: bold;">Imágenes ilustrativas</h4>`+ showImgList(array) +`
   `;
-
+  
   document.getElementById("prod-info-list-container").innerHTML = htmlContentToAppend;
+}
+
+function showImgList(array) {
+  let htmlImages = "";
+  for(let i = 0; i < array.images.length; i++){
+    let img = array.images[i];
+
+  htmlImages += `
+  <img id="imgIl" src="`+ img +`" width=22% class="img-thumbnail">
+  `;
+  }
+  return htmlImages;
 }
 
 function mostrarEstrellas(score){
