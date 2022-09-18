@@ -4,7 +4,7 @@ function login(){
 
     if(email.value !== "" && password.value !== ""){
         localStorage.setItem('user',JSON.parse(JSON.stringify(email.value)));
-        location.href = "/index.html"
+        location.href = "index.html"
     } else if(email.value === ""){
         email.classList.add('is-invalid'); 
     }if(password.value === ""){
