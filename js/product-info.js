@@ -17,7 +17,23 @@ function showProductsList(array) {
   <h5>`+ array.category +`</h5><br>
   <h4 style="font-weight: bold;">Cantidad de vendidos</h4>
   <h5 class="">`+ array.soldCount +`</h5><br>
-  <h4 style="font-weight: bold;">Imágenes ilustrativas</h4>`+ showImgList(array) +`
+  <h4 style="font-weight: bold;">Imágenes ilustrativas</h4><br>
+  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="`+ array.images[0] +`" class="d-block w-100" alt="`+ array.images[0] +`">
+    </div>
+    `+ showImgList(array) +`
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
   `;
   
   document.getElementById("prod-info-list-container").innerHTML = htmlContentToAppend;
@@ -25,11 +41,13 @@ function showProductsList(array) {
 
 function showImgList(array) {
   let htmlImages = "";
-  for(let i = 0; i < array.images.length; i++){
-    let img = array.images[i];
+  for(let i = 0; i < array.images.length-1; i++){
+    let img = array.images[i+1];
 
   htmlImages += `
-  <img id="imgIl" src="`+ img +`" width=22% class="img-thumbnail">
+    <div class="carousel-item">
+      <img src="`+ img +`" class="d-block w-100" alt="`+ img +`">
+    </div>
   `;
   }
   return htmlImages;
@@ -102,12 +120,31 @@ function addCom(){
   }
 }
 
+function showRelProd(array) {
+  let htmlRelProd = "";
+  for(let i = 0; i < array.relatedProducts.length; i++){
+    let prod = array.relatedProducts[i];
+
+  htmlRelProd += `
+  <td class="col-md-4">
+  <div class="card mb-4 custom-card cursor-active" id="`+ prod.id +`" onclick="setProdID(${prod.id})">
+    <img class="card-img-top" src="`+ prod.image +`"
+      alt="Imgagen representativa de la categoría 'Juguetes'">
+    <h3 class="m-3">`+ prod.name +`</h3>
+  </div>
+</td>
+  `;
+  }
+  document.getElementById("rel-prod").innerHTML += htmlRelProd;
+}
+
 
 document.addEventListener("DOMContentLoaded", function (resultObj) {
   getJSONData(PRODUCT_INFO_URL + idProduct + ".json").then(function (resultObj) {
     if (resultObj.status === "ok") {
       productInfoArray = resultObj.data;
       showProductsList(productInfoArray);
+      showRelProd(productInfoArray);
     }
   });
 });
@@ -125,3 +162,7 @@ document.getElementById('enviarCom').addEventListener('click', () => {
   addCom();
 });
 
+function setProdID(id) {
+  localStorage.setItem("prodID", id)
+    window.location = "product-info.html"
+}
