@@ -2,13 +2,14 @@ let productInfoArray = []
 let productInfoComArray = []
 let idProduct = localStorage.getItem("prodID");
 
-function showProductsList(array) {
+function showProductInfoList(array) {
   let htmlContentToAppend = "";
 
   htmlContentToAppend += `
   <br><br>
   <h1 class="mb-3">`+ array.name +`</h1><br>
   <hr class="mb-4">
+  <a href="products.html" id="volverAtras"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver al listado</a>
   <h4 style="font-weight: bold;">Precio</h4>
   <h5 class="">`+ array.currency +` `+ array.cost +`</h5><br>
   <h4 style="font-weight: bold;">Descripción</h4>
@@ -138,12 +139,23 @@ function showRelProd(array) {
   document.getElementById("rel-prod").innerHTML += htmlRelProd;
 }
 
+function comprar(array) {
+  localStorage.setItem('img', array.images[0]);
+  localStorage.setItem('name', array.name);
+  localStorage.setItem('currency', array.currency);
+  localStorage.setItem('cost', array.cost);
+  localStorage.setItem('count', 1);
+
+  window.location = "cart.html"
+
+}
+
 
 document.addEventListener("DOMContentLoaded", function (resultObj) {
   getJSONData(PRODUCT_INFO_URL + idProduct + ".json").then(function (resultObj) {
     if (resultObj.status === "ok") {
       productInfoArray = resultObj.data;
-      showProductsList(productInfoArray);
+      showProductInfoList(productInfoArray);
       showRelProd(productInfoArray);
     }
   });

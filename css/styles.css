@@ -255,6 +255,15 @@ input[type=email], input[type=password] {
   margin: 0 auto;
 }
 
+#volverAtras {
+  position: absolute;
+  align-self: auto;
+  right: 0;
+ margin-right: 10rem;
+ color: black;
+ text-decoration: none;
+}
+
 /*Fin de estilos propios*/
 
 /* Dropdown Button */
@@ -327,4 +336,10 @@ input[type=email], input[type=password] {
       font-weight: 400;
       color: blue;
       display: none;
+  }
+
+  .boton {
+    float: right;
+    margin-right: 8em;
+    margin-top: 3.7em;
   }
