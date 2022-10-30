@@ -58,31 +58,127 @@
       </div>
       <hr class="my-4"><br>
       <h2>Tipo de envío</h2><br>
-      <input type="radio" name="" id="premium" checked> Premium 2 a 5 días (15%)<br>
-      <input type="radio" name="" id="express"> Express 5 a 8 días (7%)<br>
-      <input type="radio" name="" id="standard"> Standard 12 a 15 días (5%)<br><br>
+      <input type="radio" id="premium" value="0.15" name="tipoenvio" onclick="sumarSubtotal()" checked>
+      <label for="premium" class="fs-5"> Premium 2 a 5 días (15%)</label><br>
+      <input type="radio" id="express" value="0.07" name="tipoenvio" onclick="sumarSubtotal()">
+      <label for="express" class="fs-5"> Express 5 a 8 días (7%)</label><br>
+      <input type="radio" id="standard" value="0.05" name="tipoenvio" onclick="sumarSubtotal()">
+      <label for="standard" class="fs-5"> Standard 12 a 15 días (5%)</label><br><br>
       <h2>Dirección de envío</h2>
       <div class="row mt-4">
         <div class="col">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="calle" class="form-label">Calle</label>
-              <input type="text" class="form-control" id="calle">
+              <input type="text" class="form-control" id="calle" required>
+              <div class="invalid-feedback">
+                Ingresa una calle
+              </div>
             </div>
 
             <div class="col-sm-6">
               <label for="numero" class="form-label">Número</label>
-              <input type="text" class="form-control" id="numero">
+              <input type="text" class="form-control" id="numero" required>
+              <div class="invalid-feedback">
+                Ingresa un número
+              </div>
             </div>
 
             <div class="col-sm-6">
               <label for="esquina" class="form-label">Esquina</label>
-              <input type="text" class="form-control" id="esquina">
+              <input type="text" class="form-control" id="esquina" required>
+              <div class="invalid-feedback">
+                Ingresa una esquina
+              </div>
             </div>
           </div>
           <br><hr class="my-4">
         </div>
       </div>
+      <h2>Costos</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><div class="row"><h6 class="col">Subtotal</h6><div style="margin-bottom: 0em;" class="col-1 fs-4">USD</div><p id="costoSubtotal" style="margin-bottom: 0em;" class="col-1 fs-4 fw-light me-5">USD 0</p></div>
+          <p class="fs-6 fw-light">Costo unitario del producto por cantidad.</p>
+        </li>
+        <li class="list-group-item"><div class="row"><h6 class="col">Costo de envío</h6><div style="margin-bottom: 0em;" class="col-1 fs-4">USD</div><p id="costoEnvio" style="margin-bottom: 0em;" class="col-1 fs-4 fw-light me-5">USD 0</p></div>
+          <p class="fs-6 fw-light">Según el tipo de envío.</p>
+          
+        </li>
+        <li class="list-group-item"><div class="row"><h6 class="col">Total ($)</h6><div style="margin-bottom: 0em;" class="col-1 fs-4 fw-bold">USD</div><p id="costoTotal" style="margin-bottom: 0em;" class="col-1 fs-4 fw-bold me-5">USD</p></div>
+        </li>
+      </ul><br>
+      <hr class="my-4">
+      <h2>Forma de pago</h2>
+      <div><p><div style="display: inline;" id="textFormPago">No ha seleccionado </div><button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
+        data-bs-target="#modalPago" id="termServ">Seleccionar</button></p><div class="invalid-feedback">
+          Debe seleccionar una forma de pago
+        </div><br>
+      
+      </div>
+    <div class="d-grid gap-2">
+      <button type="submit" id="finCompra" class="btn btn-primary btn-lg" style="font-size: x-large;">
+        Finalizar compra
+      </button>
+    </div>
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="exampleModalLabel">Forma de pago</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="radio" name="formaPago" id="tarjetaCredito">
+            <label for="tarjetaCredito">Tarjeta de crédito.</label><hr>
+            <div class="row mt-4">
+              <div class="col">
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="nroTarjeta" class="form-label">Número de tarjeta</label>
+                    <input type="text" class="form-control" id="nroTarjeta">
+                    <div class="invalid-feedback">
+                      Ingresa un número
+                    </div>
+                  </div>
+      
+                  <div class="col-sm-4">
+                    <label for="codigoSeg" class="form-label">Código de seg.</label>
+                    <input type="text" class="form-control" id="codigoSeg">
+                    <div class="invalid-feedback">
+                      Ingresa un número
+                    </div>
+                  </div>
+      
+                  <div class="col-sm-6">
+                    <label for="vencimiento" class="form-label">Vencimiento</label>
+                    <input type="text" class="form-control" id="vencimiento">
+                    <div class="invalid-feedback">
+                      Ingresa un número
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+            <div>
+              <input type="radio" name="formaPago" id="transBanc">
+            <label for="transBanc">Transferencia bancaria.</label><hr>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="nroCuenta" class="form-label">Número de cuenta</label>
+                <input type="text" class="form-control" id="nroCuenta">
+                <div class="invalid-feedback">
+                  Ingresa un número
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -94,6 +190,10 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <div class="alert alert-success alert-dismissible sticky-top fade d-flex" role="alert" id="alert-success">
+    <p>¡Has comprado con éxito!</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
