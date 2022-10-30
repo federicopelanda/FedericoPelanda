@@ -9,6 +9,8 @@ let codigoSeg = document.getElementById('codigoSeg');
 let vencimiento = document.getElementById('vencimiento');
 let nroCuenta = document.getElementById('nroCuenta');
 let textFormPago = document.getElementById('textFormPago');
+let borro = document.getElementsByName('borrar');
+
 
 document.addEventListener("DOMContentLoaded", function (resultObj) {
     getJSONData(CART_INFO_URL + 25801 + ".json").then(function (resultObj) {
@@ -21,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function (resultObj) {
   });
 
   function showCart(array) {
-    let moneda = document.getElementsByClassName('moneda')
+    document.getElementById("cart-container").innerHTML =""
+
 
     for (let i = 0; i < array.articles.length; i++) {
       let product = array.articles[i];
@@ -32,10 +35,24 @@ document.addEventListener("DOMContentLoaded", function (resultObj) {
         <td scope="row"><div class="moneda" style="display: inline">${product.currency}</div> <div style="display: inline" class="precio">${product.unitCost}</div></td>
         <td scope="row"><input type="number" id="cant" onchange='sumarSubtotal()' value="1" min="1" class="col-2"></td>
         <td id="total" scope="row" ><div class="moneda2" style="display: inline">${product.currency}</div> <div class="subtotales" style="display: inline">${product.unitCost}</div></td>
-        `;
+        <td><button name="borrar" width=30 class="btn btn-danger">Borrar</button></td>`;
 
-      }
+
+      };
+      for (let i=0; i< borro.length; i++){
+        borro[i].addEventListener('click',()=>{
+            eliminar(i);
+            sumarSubtotal();
+        })
+
+       
+    }
   };
+
+  function eliminar(posicion){
+  cartArray.articles.splice(posicion,1);
+  showCart(cartArray);
+}
 
 
   function aaa(){
