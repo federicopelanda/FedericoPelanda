@@ -20,7 +20,7 @@ function cargarDatos(){
   telefono.value = miPerfil.telefono
   avatar.src = "data:image/png;base64," + localStorage.getItem("imagenAvatar");
   }if(localStorage.getItem("imagenAvatar") == null){
-    avatar.src = "img/imgperfil.png"
+    avatar.src = "/img/img_perfil.png";
   };
 };
 
