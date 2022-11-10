@@ -55,13 +55,6 @@ document.addEventListener("DOMContentLoaded", function (resultObj) {
 }
 
 
-  function aaa(){
-  let moneda = document.getElementsByClassName('moneda')
-
-    moneda.innerHTML = "Uyu"
-  }
-
-
 function sumarSubtotal(){
  
   let precios = document.getElementsByClassName('precio');

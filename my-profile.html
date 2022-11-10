@@ -58,10 +58,60 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container"><br>
+      <img id="avatar" src="img/imgperfil.png" class="img-thumbnail" width="100px" style="float: right;"><h1 class="mb-3">Perfil</h1>
+      <br>
+  <hr class="mb-4">
+  <div class="row mt-4">
+    <div class="col">
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <label for="nombre1" class="form-label">Primer nombre*</label>
+          <input type="text" class="form-control" id="nombre1" required>
+          <div class="invalid-feedback">
+            Ingresa un nombre
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="nombre2" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-control" id="nombre2">
+        </div>
+
+        <div class="col-sm-6">
+          <label for="apellido1" class="form-label">Primer apellido*</label>
+          <input type="text" class="form-control" id="apellido1" required>
+          <div class="invalid-feedback">
+            Ingresa un apellido
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="apellido2" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="apellido2">
+        </div>
+
+        <div class="col-sm-6">
+          <label for="email" class="form-label">E-mail*</label>
+          <input type="email" class="form-control" id="email" required>
+          <div class="invalid-feedback">
+            Ingresa un email
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="inputAvatar" class="form-label">Imagen de perfil</label>
+          <input type="file" class="form-control" id="inputAvatar" name="avatar" accept="image/png, image/jpeg">
       </div>
+
+        <div class="col-sm-6">
+          <label for="telefono" class="form-label">Teléfono de contacto</label>
+          <input type="tel" class="form-control" id="telefono">
+      </div>
+      <br><hr class="my-4">
+      <button type="submit" class="btn btn-primary" id="guardarCambios">Guardar cambios</button>
+    </div>
+  </div>
     </div>
   </main>
   <footer class="text-muted">
