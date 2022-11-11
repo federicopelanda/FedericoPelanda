@@ -62,7 +62,7 @@ function cargarDatos(){
     cambiosMiPerfil.apellido2 = apellido2.value;
     cambiosMiPerfil.telefono = telefono.value;
     localStorage.setItem("miPerfil", JSON.stringify(cambiosMiPerfil));
-    location.href = "/my-profile.html" 
+    window.location = "my-profile.html" 
     
   }
   };
